@@ -1,5 +1,5 @@
 import string
 alp = list(string.ascii_uppercase)
-for i in range(len(alp)):
+for i,char in enumerate(alp):
     if (i % 10 == 0) and (i > 0): print()
-    print(alp[i],end=" ")
+    print(char,end=" ")
