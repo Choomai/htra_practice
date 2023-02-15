@@ -1,7 +1,8 @@
 # factorial(inp) === 1 * 2 * 3 * ... * inp
 # prod(...inp): multiply all elements.
-from math import factorial,prod
-def divsr(inp, mode):
+from math import factorial,prod,sqrt,gcd,lcm
+
+def divsr(inp, mode) -> list:
     res,odd,even = [],[],[]
     for i in range(1,n+1):
         if inp % i == 0: 
@@ -10,9 +11,22 @@ def divsr(inp, mode):
             res.append(i)
     if mode == "": return res
     elif mode == "od_ev": return [odd,even] # Short for odd and even.
+def isPrime(inp: int) -> bool:
+    for i in range(2, inp):
+        if inp % i != 0: return False
+    return True
+def isPerfect(inp: int) -> bool:
+    divs = divsr(inp, "")
+    if sum(divs[:-1]) == inp: return True
+    else: return False
+def isSq(inp: int) -> bool:
+    if (int(sqrt(inp)))**2 == inp: return True
+    else: return False
+def sum1_inp(inp: int) -> int: return sum(list(range(1,inp+1)))
+
 class Calc:
     def __init__(self, n, x, a, b):
-        s = [0] * 31
+        s = [0] * 34
         # Problem 1
         for i in range(1,n+1): s[1] += i
         self.prb1 = s[1]
@@ -61,34 +75,56 @@ class Calc:
 
         # prb13 to 16 cache
         cache13_16 = divsr(n, "")
-        # Problem 13
+        # Problem 13...16
         self.prb13 = cache13_16
-
-        # Problem 14
         self.prb14 = sum(cache13_16)
-
-        # Problem 15
         self.prb15 = prod(cache13_16)
-
-        # Problem 16
         self.prb16 = len(cache13_16)
 
         # prb17 to 21 cache
         cache17_21 = divsr(n, "od_ev")
-        # Problem 17
-        self.prb17 = divsr[0]
-        
-        # Problem 18
+        # Problem 17...21
+        self.prb17 = cache17_21[0]
         self.prb18 = sum(cache17_21[1])
-        
-        # Problem 19
         self.prb19 = prod(cache17_21[0])
-
-        # Problem 20
         self.prb20 = len(cache17_21[1])
-
-        # Problem 21
         self.prb21 = max(cache17_21[0])
+
+        # Problem 22...24
+        self.prb22 = isPerfect(n)
+        self.prb23 = isPrime(n)
+        self.prb24 = isSq(n)
+
+        # Problem 25
+        for k in range(int(n / 2 + 1),0,-1):
+            if sum1_inp(k) < n: break
+        self.prb25 = k
+
+        # Problem 26
+        self.prb26 = len(str(n))
+
+        # prb27 to 30 cache
+        cache27_30 = [int(elem) for elem in str(n)]
+        # Problem 27
+        self.prb27 = sum(cache27_30)
+
+        # Problem 28
+        self.prb28 = prod(cache27_30)
+        
+        # Problem 29 + 30
+        s[29],s[30] = [],[]
+        for elem in cache27_30:
+            if elem % 2 != 0: s[29].append(elem)
+            else: s[30].append(elem)
+        self.prb29 = len(s[29])
+        self.prb30 = sum(s[30])
+
+        # Problem 31
+        self.prb31 = str(n)[::-1]
+
+        # Problem 32 + 33
+        self.prb32 = gcd(a,b)
+        self.prb33 = lcm(a,b)
 
 n,x,a,b = 0,0,0,0
 # try: n = int(input())
