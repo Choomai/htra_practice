@@ -13,8 +13,9 @@ def divsr(inp, mode) -> list:
     elif mode == "od_ev": return [odd,even] # Short for odd and even.
 def isPrime(inp: int) -> bool:
     for i in range(2, inp):
-        if inp % i != 0: return False
-    return True
+        if inp % i == 0: return False
+    if inp != 1: return True
+    else: return False
 def isPerfect(inp: int) -> bool:
     divs = divsr(inp, "")
     if sum(divs[:-1]) == inp: return True
