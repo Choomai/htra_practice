@@ -1,4 +1,5 @@
 from statistics import mean
+from itertools import combinations
 fi = [open("./input/0_NUL.txt","r"),open("./input/1_SEQREAL.inp", "r"),open("./input/2_MINMAX.inp", "r"),open("./input/3_TBC.inp", "r"),open("./input/4_POS.inp", "r"),open("./input/5_ARRSORT.inp", "r"),open("./input/6_PRIME.inp", "r"),open("./input/7_PNUMBER.inp", "r"),open("./input/8_BOBASO.inp", "r"),open("./input/9_capso1.inp", "r"),open("./input/10_capso2.inp", "r"),open("./input/11_capso3.inp", "r"),open("./input/12_dprime.inp", "r"),open("./input/13_DOANCON1.inp", "r"),open("./input/14_DOANCON2.inp", "r"),open("./input/15_DOANCON3.inp", "r"),open("./input/16_PHANTICH.inp", "r"),open("./input/17_TANSO.inp", "r"),open("./input/18_CD.inp", "r"),open("./input/19_HOMEWORK.inp", "r"),open("./input/20_COW.inp", "r")]
 fo = [open("./output/0_NUL.txt","r"),open("./output/1_SEQREAL.out", "w"),open("./output/2_MINMAX.out", "w"),open("./output/3_TBC.out", "w"),open("./output/4_POS.out", "w"),open("./output/5_ARRSORT.out", "w"),open("./output/6_PRIME.out", "w"),open("./output/7_PNUMBER.out", "w"),open("./output/8_BOBASO.out", "w"),open("./output/9_capso1.out", "w"),open("./output/10_capso2.out", "w"),open("./output/11_capso3.out", "w"),open("./output/12_dprime.out", "w"),open("./output/13_DOANCON1.out", "w"),open("./output/14_DOANCON2.out", "w"),open("./output/15_DOANCON3.out", "w"),open("./output/16_PHANTICH.out", "w"),open("./output/17_TANSO.out", "w"),open("./output/18_CD.out", "w"),open("./output/19_HOMEWORK.out", "w"),open("./output/20_COW.out", "w")]
 def FParser(content: str,mode: str, convFloat=True):
@@ -56,7 +57,27 @@ n,arr = FParser(fi[6].read(), "n_arr", convFloat=False)
 prime_lst = []
 for elem in arr:
     if isPrime(elem): prime_lst.append(elem)
-print(prime_lst)
 fo[6].write(f"{len(prime_lst)} {sum(prime_lst)}")
+
+# Problem 7
+n,arr = FParser(fi[7].read(), "n_arr", convFloat=False)
+lst_6N8 = []
+for elem in arr: 
+    if all(sub_elem in ["6","8"] for sub_elem in list(str(elem))): lst_6N8.append(elem)
+fo[7].write(str(len(lst_6N8)))
+
+# Problem 8
+def isTrig(a,b,c):
+    if (a+b>c and a+c>b and b+c>a): return True
+    return False
+n,arr = FParser(fi[8].read(), "n_arr", convFloat=False)
+max_p = 0
+actual_trig = []
+for subset in combinations(arr,3):
+    if isTrig(subset[0],subset[1],subset[2]):
+        if sum(subset) > max_p: max_p = sum(subset)
+        actual_trig.append(subset)
+fo[8].write(f"{len(actual_trig)} {max_p}")
+# Save changes to all files.
 for el_fi in fi: el_fi.close()
 for el_fo in fo: el_fo.close()
