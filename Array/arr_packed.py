@@ -71,13 +71,77 @@ def isTrig(a,b,c):
     if (a+b>c and a+c>b and b+c>a): return True
     return False
 n,arr = FParser(fi[8].read(), "n_arr", convFloat=False)
-max_p = 0
-actual_trig = []
+max_p,actual_trig = 0,[]
 for subset in combinations(arr,3):
     if isTrig(subset[0],subset[1],subset[2]):
         if sum(subset) > max_p: max_p = sum(subset)
         actual_trig.append(subset)
 fo[8].write(f"{len(actual_trig)} {max_p}")
+
+# Problem 9
+n,x,arr = FParser(fi[9].read(), "nx_arr", convFloat=False)
+cnt = 0
+for i in range(len(arr) - 1):
+    if arr[i] + arr[i + 1] == x: cnt += 1
+fo[9].write(str(cnt))
+
+# Problem 10
+n,x,arr = FParser(fi[10].read(), "nx_arr", convFloat=False)
+cnt = 0
+for subset in combinations(arr,2):
+    if sum(subset) == x: cnt += 1
+fo[10].write(str(cnt))
+
+# Problem 11 // Need attention
+n,arr = FParser(fi[11].read(), "n_arr", convFloat=False)
+cnt,tmp_prime = 0,0
+for subset in combinations(arr,2):
+    if isPrime(sum(subset)):
+        tmp_prime = sum(subset)
+        break
+for subset in combinations(arr,2):
+    if sum(subset) == tmp_prime: cnt += 1
+fo[11].write(str(cnt))
+
+# Problem 12
+n,arr = FParser(fi[12].read(), "n_arr", convFloat=False)
+cnt,prime_lst = 0,[]
+for elem in arr:
+    # Conv string -> split each char -> conv each char to int
+    elem_splited = [int(subelem) for subelem in list(str(elem))]
+    if isPrime(elem) and isPrime(sum(elem_splited)):
+        cnt += 1
+        prime_lst.append(elem)
+fo[12].write(str(cnt) + "\n" + " ".join([str(elem) for elem in prime_lst]))
+
+# Problem 13
+n,arr = FParser(fi[13].read(), "n_arr", convFloat=False)
+cnt,max_cnt,last_num = 1,0,arr[0]
+for i in range(1,len(arr)):
+    if arr[i] >= last_num: cnt += 1
+    else: cnt = 1
+    if cnt > max_cnt: max_cnt = cnt
+    last_num = arr[i]
+fo[13].write(str(max_cnt))
+
+# Problem 14
+n,arr = FParser(fi[14].read(), "n_arr", convFloat=False)
+cnt,max_cnt,last_num = 1,0,arr[0]
+for i in range(1,len(arr)):
+    if ((arr[i] * -1 >= 0) and last_num >= 0) or ((arr[i] * -1 < 0) and last_num < 0): cnt += 1               
+    else: cnt = 1
+    if cnt > max_cnt: max_cnt = cnt
+    last_num = arr[i]
+fo[14].write(str(max_cnt))
+
+# Problem 15
+n,arr = FParser(fi[15].read(), "n_arr", convFloat=False)
+sum_arr,tmp_arr = [],[]
+for i in range(2,len(arr)):
+    for j in range(len(arr) - i + 1): sum_arr.append(arr[j:j + i])
+sum_arr = [sum(subset) for subset in sum_arr]
+fo[15].write(str(max(sum_arr)))
+
 # Save changes to all files.
 for el_fi in fi: el_fi.close()
 for el_fo in fo: el_fo.close()
