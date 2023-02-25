@@ -9,7 +9,7 @@ def FParser(content: str,mode: str, convFloat=True):
     if mode == "n_arr":
         tmp_n = int(tmp[0])
         return tmp_n,tmp_lst
-    if mode == "nx_arr":
+    elif mode == "nx_arr":
         nx_lst = tmp[0].split(" ")
         tmp_n = int(nx_lst[0])
         tmp_x = float(nx_lst[1])
@@ -142,6 +142,53 @@ for i in range(2,len(arr)):
 sum_arr = [sum(subset) for subset in sum_arr]
 fo[15].write(str(max(sum_arr)))
 
+# Problem 16
+n,i,prime_dict = int(fi[16].read()),2,{}
+while True:
+    while n % i != 0: i += 1
+    if i in prime_dict: prime_dict[i] += 1
+    else: prime_dict[i] = 1
+    n = n // i
+    if n == 1: break
+for index,val in prime_dict.items(): fo[16].write(str(index) + " " + str(val) + "\n")
+
+# Problem 17
+n,arr = FParser(fi[17].read(), "n_arr", convFloat=False)
+num_dict = dict.fromkeys(sorted(set(arr)), 0)
+for elem in arr: num_dict[elem] += 1
+for index,val in num_dict.items(): fo[17].write(str(index) + " " + str(val) + "\n")
+
+# Problem 18
+n,s,arr = FParser(fi[18].read(), "nx_arr", convFloat=False)
+safe_lst,max_len,saved_index = [],0,0
+for i in range(len(arr),0,-1):
+    for elem in combinations(arr, i):
+        if (len(elem) > max_len) and sum(elem) <= s: max_len,saved_index = sum(elem), i
+fo[18].write(str(saved_index))
+
+# Problem 19
+n,s,arr = FParser(fi[19].read(), "nx_arr", convFloat=False)
+i_end,cnt = len(arr),0
+for i in range(i_end):
+    for index,elem in enumerate(arr): 
+        if s >= elem: 
+            s += elem
+            arr.pop(index)
+            i_end -= 1
+            cnt += 1
+            break
+fo[19].write(str(cnt))
+
+# Problem 20
+# Handling file
+raw = fi[20].read().split("\n")
+ns_raw = raw.pop(0)
+n,s = int(ns_raw.split(" ")[0]), int(ns_raw.split(" ")[1])
+saved_tuple,arr = None,[int(elem) for elem in raw]
+# Calc
+for elem in combinations(arr, n):
+    if sum(elem) == 100: saved_tuple = elem
+fo[20].write("\n".join([str(elem) for elem in saved_tuple]))
 # Save changes to all files.
 for el_fi in fi: el_fi.close()
 for el_fo in fo: el_fo.close()
