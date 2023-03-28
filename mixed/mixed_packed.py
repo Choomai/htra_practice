@@ -1,0 +1,2 @@
+fi = [open("./input/0_NUL.txt", "r"),open("./input/1_PRIMECNT.inp", "r"),open("./input/2_SothuK.inp", "r"),open("./input/3_Xauthunhat.inp", "r"),open("./input/4_Toigian.inp", "r"),open("./input/5_Special.inp", "r")]
+fo = [open("./output/0_NUL.txt", "r"),open("./input/1_PRIMECNT.out", "w"),open("./input/2_SothuK.out", "w"),open("./input/3_Xauthunhat.out", "w"),open("./input/4_Toigian.out", "w"),open("./input/5_Special.out", "w")]
