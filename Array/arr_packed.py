@@ -1,32 +1,8 @@
+from null_libs import *
 from statistics import mean
 from itertools import combinations
 fi = [open("./input/0_NUL.txt","r"),open("./input/1_SEQREAL.inp", "r"),open("./input/2_MINMAX.inp", "r"),open("./input/3_TBC.inp", "r"),open("./input/4_POS.inp", "r"),open("./input/5_ARRSORT.inp", "r"),open("./input/6_PRIME.inp", "r"),open("./input/7_PNUMBER.inp", "r"),open("./input/8_BOBASO.inp", "r"),open("./input/9_capso1.inp", "r"),open("./input/10_capso2.inp", "r"),open("./input/11_capso3.inp", "r"),open("./input/12_dprime.inp", "r"),open("./input/13_DOANCON1.inp", "r"),open("./input/14_DOANCON2.inp", "r"),open("./input/15_DOANCON3.inp", "r"),open("./input/16_PHANTICH.inp", "r"),open("./input/17_TANSO.inp", "r"),open("./input/18_CD.inp", "r"),open("./input/19_HOMEWORK.inp", "r"),open("./input/20_COW.inp", "r")]
 fo = [open("./output/0_NUL.txt","r"),open("./output/1_SEQREAL.out", "w"),open("./output/2_MINMAX.out", "w"),open("./output/3_TBC.out", "w"),open("./output/4_POS.out", "w"),open("./output/5_ARRSORT.out", "w"),open("./output/6_PRIME.out", "w"),open("./output/7_PNUMBER.out", "w"),open("./output/8_BOBASO.out", "w"),open("./output/9_capso1.out", "w"),open("./output/10_capso2.out", "w"),open("./output/11_capso3.out", "w"),open("./output/12_dprime.out", "w"),open("./output/13_DOANCON1.out", "w"),open("./output/14_DOANCON2.out", "w"),open("./output/15_DOANCON3.out", "w"),open("./output/16_PHANTICH.out", "w"),open("./output/17_TANSO.out", "w"),open("./output/18_CD.out", "w"),open("./output/19_HOMEWORK.out", "w"),open("./output/20_COW.out", "w")]
-def FParser(content: str,mode: str, convFloat=True):
-    tmp = content.split("\n")
-    if convFloat: tmp_lst = [float(elem) for elem in tmp[1].split(" ")]
-    else: tmp_lst = [int(elem) for elem in tmp[1].split(" ")]
-    if mode == "n_arr":
-        tmp_n = int(tmp[0])
-        return tmp_n,tmp_lst
-    elif mode == "nx_arr":
-        nx_lst = tmp[0].split(" ")
-        tmp_n = int(nx_lst[0])
-        tmp_x = float(nx_lst[1])
-        return tmp_n,tmp_x,tmp_lst
-def isPrime(inp: int) -> bool:
-    for i in range(2, inp):
-        if inp % i == 0: return False
-    if inp != 1: return True
-    else: return False
-def oddNeven(inp: list) -> list:
-    odd,even,neg,pos = [],[],[],[]
-    for elem in inp:
-        if elem % 2 == 0: even.append(elem)
-        else: odd.append(elem)
-        if elem >= 0: pos.append(elem)
-        else: neg.append(elem)
-    return [odd,even,neg,pos]
 
 # Problem 1
 n,arr = FParser(fi[1].read(), "n_arr")
