@@ -44,7 +44,7 @@ fo[4].write(str(frac_obj.numerator) + " " + str(frac_obj.denominator))
 # Problem 5
 splited = fi[5].read().split("\n")
 counter_obj = Counter(splited)
-fo[5].write(list(filter(lambda x: counter_obj[x] == 1, counter_obj.keys()))[0])
+fo[5].write(list(filter(lambda key: counter_obj[key] == 1, counter_obj.keys()))[0])
 
 # Save changes to all files.
 for el_fi in fi: el_fi.close()
