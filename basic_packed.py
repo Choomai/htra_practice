@@ -1,29 +1,9 @@
 # factorial(inp) === 1 * 2 * 3 * ... * inp
 # prod(...inp): multiply all elements.
-from math import factorial,prod,sqrt,gcd,lcm
-
-def divsr(inp, mode) -> list:
-    res,odd,even = [],[],[]
-    for i in range(1,n+1):
-        if inp % i == 0: 
-            if i % 2 == 0: even.append(i)
-            else: odd.append(i)
-            res.append(i)
-    if mode == "": return res
-    elif mode == "od_ev": return [odd,even] # Short for odd and even.
-def isPrime(inp: int) -> bool:
-    for i in range(2, inp):
-        if inp % i == 0: return False
-    if inp != 1: return True
-    else: return False
-def isPerfect(inp: int) -> bool:
-    divs = divsr(inp, "")
-    if sum(divs[:-1]) == inp: return True
-    else: return False
-def isSq(inp: int) -> bool:
-    if (int(sqrt(inp)))**2 == inp: return True
-    else: return False
-def sum1_inp(inp: int) -> int: return sum(list(range(1,inp+1)))
+from math import factorial,prod,gcd,lcm
+import sys
+sys.path.append("..")
+from null_libs import *
 
 class Calc:
     def __init__(self, n, x, a, b):
@@ -98,7 +78,7 @@ class Calc:
 
         # Problem 25
         for k in range(int(n / 2 + 1),0,-1):
-            if sum1_inp(k) < n: break
+            if sum(list(range(1,k+1))) < n: break
         self.prb25 = k
 
         # Problem 26

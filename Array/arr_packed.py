@@ -5,38 +5,38 @@ fi = [open("./input/0_NUL.txt","r"),open("./input/1_SEQREAL.inp", "r"),open("./i
 fo = [open("./output/0_NUL.txt","r"),open("./output/1_SEQREAL.out", "w"),open("./output/2_MINMAX.out", "w"),open("./output/3_TBC.out", "w"),open("./output/4_POS.out", "w"),open("./output/5_ARRSORT.out", "w"),open("./output/6_PRIME.out", "w"),open("./output/7_PNUMBER.out", "w"),open("./output/8_BOBASO.out", "w"),open("./output/9_capso1.out", "w"),open("./output/10_capso2.out", "w"),open("./output/11_capso3.out", "w"),open("./output/12_dprime.out", "w"),open("./output/13_DOANCON1.out", "w"),open("./output/14_DOANCON2.out", "w"),open("./output/15_DOANCON3.out", "w"),open("./output/16_PHANTICH.out", "w"),open("./output/17_TANSO.out", "w"),open("./output/18_CD.out", "w"),open("./output/19_HOMEWORK.out", "w"),open("./output/20_COW.out", "w")]
 
 # Problem 1
-n,arr = FParser(fi[1].read(), "n_arr")
+n,arr = FParser(fi[1].read(), "n_line")
 lst_res = oddNeven(arr)
 fo[1].write(f"{sum(arr)} {sum(lst_res[2])} {sum(lst_res[3])} {sum(arr[1::2])} {sum(arr[::2])}")
 
 # Problem 2
-n,arr = FParser(fi[2].read(), "n_arr")
+n,arr = FParser(fi[2].read(), "n_line")
 fo[2].write(f"{max(arr)} {min(arr)}")
 
 # Problem 3
-n,arr = FParser(fi[3].read(), "n_arr")
+n,arr = FParser(fi[3].read(), "n_line")
 avg = mean(arr)
 fo[3].write(f"{avg}\n{min(arr, key=lambda elem: abs(avg-elem))}")
 
 # Problem 4
-n,x,arr = FParser(fi[4].read(), "nx_arr")
+n,x,arr = FParser(fi[4].read(), "nx_line")
 lst_res = oddNeven(arr)
 fo[4].write(f"{lst_res[2][0]} {lst_res[3][-1]}\n{arr.index(x) + 1} {len(arr) - arr[::-1].index(x)}")
 
 # Problem 5
-n,arr = FParser(fi[5].read(), "n_arr")
+n,arr = FParser(fi[5].read(), "n_line")
 sorted_lst = [str(elem) for elem in sorted(arr)]
 fo[5].write(f"{' '.join(sorted_lst)}\n{' '.join(sorted_lst[::-1])}")
 
 # Problem 6
-n,arr = FParser(fi[6].read(), "n_arr", convFloat=False)
+n,arr = FParser(fi[6].read(), "n_line", convFloat=False)
 prime_lst = []
 for elem in arr:
     if isPrime(elem): prime_lst.append(elem)
 fo[6].write(f"{len(prime_lst)} {sum(prime_lst)}")
 
 # Problem 7
-n,arr = FParser(fi[7].read(), "n_arr", convFloat=False)
+n,arr = FParser(fi[7].read(), "n_line", convFloat=False)
 lst_6N8 = []
 for elem in arr: 
     if all(sub_elem in ["6","8"] for sub_elem in list(str(elem))): lst_6N8.append(elem)
@@ -46,7 +46,7 @@ fo[7].write(str(len(lst_6N8)))
 def isTrig(a,b,c):
     if (a+b>c and a+c>b and b+c>a): return True
     return False
-n,arr = FParser(fi[8].read(), "n_arr", convFloat=False)
+n,arr = FParser(fi[8].read(), "n_line", convFloat=False)
 max_p,actual_trig = 0,[]
 for subset in combinations(arr,3):
     if isTrig(subset[0],subset[1],subset[2]):
@@ -55,21 +55,21 @@ for subset in combinations(arr,3):
 fo[8].write(f"{len(actual_trig)} {max_p}")
 
 # Problem 9
-n,x,arr = FParser(fi[9].read(), "nx_arr", convFloat=False)
+n,x,arr = FParser(fi[9].read(), "nx_line", convFloat=False)
 cnt = 0
 for i in range(len(arr) - 1):
     if arr[i] + arr[i + 1] == x: cnt += 1
 fo[9].write(str(cnt))
 
 # Problem 10
-n,x,arr = FParser(fi[10].read(), "nx_arr", convFloat=False)
+n,x,arr = FParser(fi[10].read(), "nx_line", convFloat=False)
 cnt = 0
 for subset in combinations(arr,2):
     if sum(subset) == x: cnt += 1
 fo[10].write(str(cnt))
 
 # Problem 11 // Need attention
-n,arr = FParser(fi[11].read(), "n_arr", convFloat=False)
+n,arr = FParser(fi[11].read(), "n_line", convFloat=False)
 cnt,tmp_prime = 0,0
 for subset in combinations(arr,2):
     if isPrime(sum(subset)):
@@ -80,7 +80,7 @@ for subset in combinations(arr,2):
 fo[11].write(str(cnt))
 
 # Problem 12
-n,arr = FParser(fi[12].read(), "n_arr", convFloat=False)
+n,arr = FParser(fi[12].read(), "n_line", convFloat=False)
 cnt,prime_lst = 0,[]
 for elem in arr:
     # Conv string -> split each char -> conv each char to int
@@ -91,7 +91,7 @@ for elem in arr:
 fo[12].write(str(cnt) + "\n" + " ".join([str(elem) for elem in prime_lst]))
 
 # Problem 13
-n,arr = FParser(fi[13].read(), "n_arr", convFloat=False)
+n,arr = FParser(fi[13].read(), "n_line", convFloat=False)
 cnt,max_cnt,last_num = 1,0,arr[0]
 for i in range(1,len(arr)):
     if arr[i] >= last_num: cnt += 1
@@ -101,7 +101,7 @@ for i in range(1,len(arr)):
 fo[13].write(str(max_cnt))
 
 # Problem 14
-n,arr = FParser(fi[14].read(), "n_arr", convFloat=False)
+n,arr = FParser(fi[14].read(), "n_line", convFloat=False)
 cnt,max_cnt,last_num = 1,0,arr[0]
 for i in range(1,len(arr)):
     if ((arr[i] * -1 >= 0) and last_num >= 0) or ((arr[i] * -1 < 0) and last_num < 0): cnt += 1               
@@ -111,7 +111,7 @@ for i in range(1,len(arr)):
 fo[14].write(str(max_cnt))
 
 # Problem 15
-n,arr = FParser(fi[15].read(), "n_arr", convFloat=False)
+n,arr = FParser(fi[15].read(), "n_line", convFloat=False)
 sum_arr,tmp_arr = [],[]
 for i in range(2,len(arr)):
     for j in range(len(arr) - i + 1): sum_arr.append(arr[j:j + i])
@@ -129,13 +129,13 @@ while True:
 for index,val in prime_dict.items(): fo[16].write(str(index) + " " + str(val) + "\n")
 
 # Problem 17
-n,arr = FParser(fi[17].read(), "n_arr", convFloat=False)
+n,arr = FParser(fi[17].read(), "n_line", convFloat=False)
 num_dict = dict.fromkeys(sorted(set(arr)), 0)
 for elem in arr: num_dict[elem] += 1
 for index,val in num_dict.items(): fo[17].write(str(index) + " " + str(val) + "\n")
 
 # Problem 18
-n,s,arr = FParser(fi[18].read(), "nx_arr", convFloat=False)
+n,s,arr = FParser(fi[18].read(), "nx_line", convFloat=False)
 safe_lst,max_len,saved_index = [],0,0
 for i in range(len(arr),0,-1):
     for elem in combinations(arr, i):
@@ -143,7 +143,7 @@ for i in range(len(arr),0,-1):
 fo[18].write(str(saved_index))
 
 # Problem 19
-n,s,arr = FParser(fi[19].read(), "nx_arr", convFloat=False)
+n,s,arr = FParser(fi[19].read(), "nx_line", convFloat=False)
 i_end,cnt = len(arr),0
 for i in range(i_end):
     for index,elem in enumerate(arr): 
