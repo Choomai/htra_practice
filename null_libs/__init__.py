@@ -21,10 +21,10 @@ def FParser(content: str,mode: str, convFloat=True):
     else: raise NotImplementedError("Missing parameters or mode not found")
 
 def isPrime(inp: int) -> bool:
-    for i in range(2, inp):
+    if inp == 1: return False
+    for i in range(2, int(sqrt(inp)) + 1):
         if inp % i == 0: return False
-    if inp > 1: return True
-    else: return False
+    return True
 
 def oddNeven(inp: list) -> list:
     odd,even,neg,pos = [],[],[],[]

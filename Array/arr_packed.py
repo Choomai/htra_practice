@@ -1,3 +1,5 @@
+import sys
+sys.path.append("..")
 from null_libs import *
 from statistics import mean
 from itertools import combinations
