@@ -1,14 +1,14 @@
 t = int(input())
-nums, result = [], []
+nums = []
 for _ in range(t): nums.append([int(elem) for elem in input().split()])
 
 for arr in nums:
-    small = arr[0] * arr[1]
-    org_n = arr[4] # Backup N
-    for a in range(arr[0], arr[0] - arr[4]-1, -1): # A to A-N, go down.
-        if a < arr[2]: break
-        arr[4] = org_n - (arr[0] - a)
-        for b in range(arr[1], arr[1] - arr[4]-1, -1): # B-N to B, go down
-            if b < arr[3]: break
-            small = min(a * b, small)
-    print(small)
+    A, B, X, Y, N = arr
+    min_product = float('inf') # Get an infinity float number.
+    for a_used in range(2):
+        b_used = min(N - a_used, B - Y)
+        a = max(A - (N - b_used), X)
+        b = B - b_used
+        min_product = min(min_product, a * b)
+        A, B, X, Y = B, A, Y, X
+    print(min_product)
