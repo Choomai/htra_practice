@@ -35,7 +35,7 @@ def oddNeven(inp: list) -> list:
         else: neg.append(elem)
     return [odd,even,neg,pos]
 
-def divsr(inp, mode) -> list:
+def divsr(inp, mode:str = "") -> list:
     res,odd,even = [],[],[]
     for i in range(1,inp+1):
         if inp % i == 0: 
