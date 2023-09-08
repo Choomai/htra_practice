@@ -1,5 +1,4 @@
 inp_str = input()
-# inp_str = "ABCDEFABCDEFGHIJKLFMNO"
 caught_chars = ""
 result,current_counter = 0,0
 
