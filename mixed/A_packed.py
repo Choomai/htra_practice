@@ -1,5 +1,5 @@
-fi = [open("./input/0_NUL.txt", "r"),open("./input/1_PRIMECNT.inp", "r"),open("./input/2_SothuK.inp", "r"),open("./input/3_Xauthuannhat.inp", "r"),open("./input/4_Toigian.inp", "r"),open("./input/5_Special.inp", "r")]
-fo = [open("./output/0_NUL.txt", "r"),open("./output/1_PRIMECNT.out", "w"),open("./output/2_SothuK.out", "w"),open("./output/3_Xauthuannhat.out", "w"),open("./output/4_Toigian.out", "w"),open("./output/5_Special.out", "w")]
+fi = [open("./A_input/0_NUL.txt", "r"),open("./A_input/1_PRIMECNT.inp", "r"),open("./A_input/2_SothuK.inp", "r"),open("./A_input/3_Xauthuannhat.inp", "r"),open("./A_input/4_Toigian.inp", "r"),open("./A_input/5_Special.inp", "r")]
+fo = [open("./A_output/0_NUL.txt", "r"),open("./A_output/1_PRIMECNT.out", "w"),open("./A_output/2_SothuK.out", "w"),open("./A_output/3_Xauthuannhat.out", "w"),open("./A_output/4_Toigian.out", "w"),open("./A_output/5_Special.out", "w")]
 import sys
 sys.path.append("..")
 from null_libs import *
