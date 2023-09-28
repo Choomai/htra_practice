@@ -1,0 +1,3 @@
+inp = open("io/4_CHIAL.inp", "r")
+out = open("io/4_CHIAL.out", "w")
+# ...

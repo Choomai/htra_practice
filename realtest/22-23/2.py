@@ -1,5 +1,5 @@
-inp = open("example/2_DOITHO.INP", "r")
-out = open("example/2_DOITHO.OUT", "w")
+inp = open("io/2_DOITHO.INP", "r")
+out = open("io/2_DOITHO.OUT", "w")
 n = int(inp.read())
 rab = [0]
 for i in range(1,n+1):
