@@ -1,4 +1,3 @@
-from itertools import combinations
 from pprint import pprint
 n, m = [int(elem) for elem in input().split()]
 map_2d = [[0 for _ in range(m)] for __ in range(n)]
