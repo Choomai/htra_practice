@@ -8,7 +8,8 @@ def isUnique(inp) -> bool:
             if inp[i:i+length] == inp[i+length:i+2*length]: return False
     return True
 
-counter = 1
+counter = 0
 n, m = [int(elem) for elem in input().split()]
 for valid_str in filter(isUnique, product(range(1, m + 1), repeat=n)):
-    print("".join( map(str, valid_str) ))
+    counter += 1
+    print(counter,":","".join( map(str, valid_str) ))
