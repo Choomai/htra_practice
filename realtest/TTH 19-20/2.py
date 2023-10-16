@@ -7,7 +7,7 @@ for _ in range(n):
     row_inp = [int(elem) for elem in input().split()]
     dd_arr.append(row_inp)
     d_arr.extend(filter(lambda x: x != 0, row_inp))
-d_arr = sorted(d_arr, reverse=True)
+d_arr = sorted(d_arr, reverse=True) # -> [9,8,7,6,5,4...]
 
 group_1, group_2 = [],[]
 sum_1, sum_2 = 0,0
@@ -18,6 +18,8 @@ for cls in d_arr:
     else:
         group_2.append(cls)
         sum_2 += cls
+# group_1 -> [9] -> [9]   -> [9,6] -> [9,6,5] -> [9,6,5] -> ...
+# group_2 -> [8] -> [8,7] -> [8,7] -> [8,7]   -> [8,7,4] -> ...
 
 for cls in group_2:
     x_pos, y_pos = 0,0
