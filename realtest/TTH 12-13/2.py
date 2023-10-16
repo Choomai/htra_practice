@@ -10,4 +10,4 @@ def haveSubstr(inp) -> bool:
 
 counter = 1
 n, m = [int(elem) for elem in input().split()]
-for filter(haveSubstr, product(range(1, m + 1), repeat=n))
+print("\n".join(map(lambda inp: "".join(map(str, inp)), filter(lambda inp: "".join(map(str, inp)), filter(haveSubstr, product(range(1, m + 1), repeat=n))))))
