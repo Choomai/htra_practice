@@ -1,13 +1,3 @@
-base26 = {i: char for i, char in enumerate("abcdefghijklmnopqrstuvwxyz")}
-
-def int2str(integer):
-    array = []
-    while integer:
-        integer, value = divmod(integer, 26)
-        array.append(base26[value - 1])
-    return ''.join(reversed(array))
-
-print(int2str(int(input())))
 # Create a value-to-symbol table.
 
 # Take a integer and base to convert to.
@@ -18,3 +8,13 @@ print(int2str(int(input())))
 #         (2) Store remaining number not "chopped" (integer).
 #     Save the digit in your storage array.
 # Return your joined digits after putting them in the right order.
+
+from string import ascii_lowercase
+def base10_to_base26(num):
+    base26 = ""
+    while num > 0:
+        num -= 1
+        base26 = ascii_lowercase[num % 26] + base26
+        num //= 26
+    return base26
+print(base10_to_base26(int(input())))
