@@ -10,6 +10,7 @@ found_rooms = []
 visited = [False for _ in range(m)]
 
 for cls in students_cls:
+    cls_found = False
     for comp in sorted_comp_rooms:
         max_diff, max_index = float('inf'), -1
         if (comp >= cls + 1) and (max_diff > comp - cls - 1):
@@ -27,8 +28,11 @@ for cls in students_cls:
             found_rooms.append(max_index + 1)
             need_remove = comp_rooms[max_index]
             sorted_comp_rooms.remove(need_remove)
+            cls_found = True
             break
-
+    
+    if not cls_found: found_rooms.append(0)
+    
 print("==================")
 print(found_counter)
 print(found_rooms)
