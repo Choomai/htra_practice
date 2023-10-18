@@ -10,11 +10,10 @@
 # Return your joined digits after putting them in the right order.
 
 from string import ascii_lowercase
-def base10_to_base26(num):
-    base26 = ""
-    while num > 0:
-        num -= 1
-        base26 = ascii_lowercase[num % 26] + base26
-        num //= 26
-    return base26
-print(base10_to_base26(int(input())))
+num = int(input())
+base26 = ""
+while num > 0:
+    num -= 1
+    base26 = ascii_lowercase[num % 26] + base26
+    num //= 26
+print(base26)
