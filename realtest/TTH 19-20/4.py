@@ -2,7 +2,7 @@ from sys import path
 path.append("../../")
 from null_libs import isPrime
 
-N = int(input())
+N = 10000
 result = [N]
 current = N - 1
 while current > 1:

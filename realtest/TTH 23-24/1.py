@@ -1,4 +1,4 @@
-n = 15
+n = 100
 for i in range(2, n*n):
     divs_counter = 2
     for j in range(2, i // 2 + 1):
