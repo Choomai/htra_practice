@@ -1,8 +1,5 @@
-from itertools import permutations
+from itertools import combinations
 
 n, k = map(int, input().split())
-result = []
-for comb in permutations(range(1, n+1), k):
-    result.append("".join(map(str, comb)))
-
-print(result)
+for comb in combinations(range(1, n+1), k):
+    print("".join(map(str, comb)), end=" ")
