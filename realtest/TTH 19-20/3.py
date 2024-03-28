@@ -1,5 +1,3 @@
-def valid(inp: str) -> bool: return inp == inp[::-1]
-
 n = int(input())
 syms = []
 for _ in range(n): syms.append(input())
