@@ -1,5 +1,6 @@
 from math import sqrt
 import string
+from os import path
 
 def FParser(content: str,mode: str, convFloat=True):
     tmp = content.split("\n")
@@ -67,3 +68,6 @@ def deCounter(inp: str) -> str:
         if (arr[i].isalpha()) and (arr[i + 1] in string.digits):
             res += arr[i] * int(arr[i + 1])
     return res
+
+def filename(file_path) -> str:
+    return path.splitext(path.basename(file_path))[0]

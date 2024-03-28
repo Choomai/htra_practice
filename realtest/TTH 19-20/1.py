@@ -1,3 +1,7 @@
 from itertools import product
-combs = product("wb", repeat=int(input()))
-for comb in combs: print("".join(comb))
+
+with open("inp/1.inp", "r") as inp: n = int(inp.readline())
+
+combs = product("wb", repeat=n)
+with open("out/1.out", "w") as out:
+    for comb in combs: out.write("".join(comb) + "\n")
