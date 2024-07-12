@@ -1,6 +1,4 @@
-from pprint import pprint
-
-with open("inp/2.inp", "r") as f: 
+with open("io/2.inp", "r") as f: 
     n, m = [int(elem) for elem in f.readline().split()]
     map_2d = [[0 for _ in range(m)] for __ in range(n)]
     dd_arr = [] # 2D array
@@ -34,6 +32,6 @@ for cls in group_2:
             break
     map_2d[y_pos][x_pos] = 1
 
-with open("out/2.out", "w") as f:
+with open("io/2.out", "w") as f:
     f.writelines(map(str, map_2d))
     f.write(f"{sum_1} {sum_2}")

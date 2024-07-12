@@ -1,7 +1,5 @@
-fi = [open("./A_input/0_NUL.txt", "r"),open("./A_input/1_PRIMECNT.inp", "r"),open("./A_input/2_SothuK.inp", "r"),open("./A_input/3_Xauthuannhat.inp", "r"),open("./A_input/4_Toigian.inp", "r"),open("./A_input/5_Special.inp", "r")]
-fo = [open("./A_output/0_NUL.txt", "r"),open("./A_output/1_PRIMECNT.out", "w"),open("./A_output/2_SothuK.out", "w"),open("./A_output/3_Xauthuannhat.out", "w"),open("./A_output/4_Toigian.out", "w"),open("./A_output/5_Special.out", "w")]
-import sys
-sys.path.append("..")
+fi = [None, open("io/1_PRIMECNT.inp", "r"),open("io/2_SothuK.inp", "r"),open("io/3_Xauthuannhat.inp", "r"),open("io/4_Toigian.inp", "r"),open("io/5_Special.inp", "r")]
+fo = [None, open("io/1_PRIMECNT.out", "w"),open("io/2_SothuK.out", "w"),open("io/3_Xauthuannhat.out", "w"),open("io/4_Toigian.out", "w"),open("io/5_Special.out", "w")]
 from null_libs import FParser, isPrime, deCounter
 from collections import Counter
 from fractions import Fraction
