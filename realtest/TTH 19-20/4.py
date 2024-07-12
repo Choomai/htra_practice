@@ -1,6 +1,6 @@
 from sys import path
 path.append("../../")
-from null_libs import isPrime
+from null_practice.null_libs import isPrime
 
 N = 10000
 result = [N]

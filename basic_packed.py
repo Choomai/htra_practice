@@ -3,7 +3,7 @@
 from math import factorial,prod,gcd,lcm
 import sys
 sys.path.append("..")
-from null_libs import *
+from null_practice.null_libs import *
 
 class Calc:
     def __init__(self, n, x, a, b):
