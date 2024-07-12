@@ -2,7 +2,7 @@ fi = [open("./A_input/0_NUL.txt", "r"),open("./A_input/1_PRIMECNT.inp", "r"),ope
 fo = [open("./A_output/0_NUL.txt", "r"),open("./A_output/1_PRIMECNT.out", "w"),open("./A_output/2_SothuK.out", "w"),open("./A_output/3_Xauthuannhat.out", "w"),open("./A_output/4_Toigian.out", "w"),open("./A_output/5_Special.out", "w")]
 import sys
 sys.path.append("..")
-from null_practice.null_libs import *
+from null_libs import FParser, isPrime, deCounter
 from collections import Counter
 from fractions import Fraction
 

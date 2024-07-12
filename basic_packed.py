@@ -1,9 +1,7 @@
 # factorial(inp) === 1 * 2 * 3 * ... * inp
 # prod(...inp): multiply all elements.
 from math import factorial,prod,gcd,lcm
-import sys
-sys.path.append("..")
-from null_practice.null_libs import *
+from null_libs import isPerfect, isPrime, divsr, isSq
 
 class Calc:
     def __init__(self, n, x, a, b):

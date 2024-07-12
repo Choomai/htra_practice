@@ -1,6 +1,3 @@
-import sys
-sys.path.append("..")
-from null_practice.null_libs import *
 from collections import Counter
 
 n = int(input())

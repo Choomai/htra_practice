@@ -1,6 +1,4 @@
-import sys
-sys.path.append("..")
-from null_practice.null_libs import filename
+from null_libs import filename
 from itertools import permutations
 
 io_name = filename(__file__)

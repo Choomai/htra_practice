@@ -1,6 +1,4 @@
-import sys
-sys.path.append("..")
-from null_practice.null_libs import *
+from null_libs import divsr
 
 n = int(input())
 inp = []

@@ -1,6 +1,4 @@
-import sys
-sys.path.append("..")
-from null_practice.null_libs import *
+from null_libs import FParser, oddNeven, isPrime
 from statistics import mean
 from itertools import combinations
 fi = [open("./input/0_NUL.txt","r"),open("./input/1_SEQREAL.inp", "r"),open("./input/2_MINMAX.inp", "r"),open("./input/3_TBC.inp", "r"),open("./input/4_POS.inp", "r"),open("./input/5_ARRSORT.inp", "r"),open("./input/6_PRIME.inp", "r"),open("./input/7_PNUMBER.inp", "r"),open("./input/8_BOBASO.inp", "r"),open("./input/9_capso1.inp", "r"),open("./input/10_capso2.inp", "r"),open("./input/11_capso3.inp", "r"),open("./input/12_dprime.inp", "r"),open("./input/13_DOANCON1.inp", "r"),open("./input/14_DOANCON2.inp", "r"),open("./input/15_DOANCON3.inp", "r"),open("./input/16_PHANTICH.inp", "r"),open("./input/17_TANSO.inp", "r"),open("./input/18_CD.inp", "r"),open("./input/19_HOMEWORK.inp", "r"),open("./input/20_COW.inp", "r")]
