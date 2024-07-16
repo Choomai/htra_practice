@@ -12,10 +12,6 @@ class Car:
         return self.order < other.order
     def __gt__(self, other: object) -> bool:
         return self.order > other.order
-    def __le__(self, other: object) -> bool:
-        return self.order <= other.order
-    def __ge__(self, other: object) -> bool:
-        return self.order <= other.order
 
     def get_cost(self) -> int:
         return self.distance * self.consume_rate

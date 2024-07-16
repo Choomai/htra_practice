@@ -6,18 +6,10 @@ class Event:
     endDay: int
     index: int
 
-    def __eq__(self, other: object) -> bool:
-        return self.endDay == other.endDay
-    def __ne__(self, other: object) -> bool:
-        return self.endDay != other.endDay
     def __lt__(self, other: object) -> bool:
         return self.endDay < other.endDay
     def __gt__(self, other: object) -> bool:
         return self.endDay > other.endDay
-    def __le__(self, other: object) -> bool:
-        return self.endDay <= other.endDay
-    def __ge__(self, other: object) -> bool:
-        return self.endDay >= other.endDay
 
 events = []
 with open("io/3_XEPLICH.inp", "r") as f:
