@@ -1,8 +1,8 @@
-# Identical to TTH/18-19/1
+# Identical to TTH/18-19/1 and TTH/21-22/2
 from dataclasses import dataclass
 
 @dataclass
-class SelectedCar:
+class Car:
     distance: int
     consume_rate: int
     index: int
@@ -46,9 +46,9 @@ for i in range(N):
     distance_order = get_index(cache_distances, distances, distance)
     consume_rate_index = get_index(cache_consume_rates, consume_rates, consume_rate)
 
-    selected_car = SelectedCar(distance, consume_rate, consume_rate_index, distance_order)
-    total += selected_car.get_cost()
-    cars.append(selected_car)
+    car = Car(distance, consume_rate, consume_rate_index, distance_order)
+    total += car.get_cost()
+    cars.append(car)
 
 with open("io/4_RENTCARS.out", "w") as f:
     f.write(f"{total}\n")
