@@ -1,11 +1,6 @@
 # Identical to TTH/18-19/1
 from dataclasses import dataclass
 
-# DEBUG
-from os import chdir
-from os.path import join
-chdir(join("null_practice", "greedy"))
-
 @dataclass
 class SelectedCar:
     distance: int
@@ -33,7 +28,7 @@ with open("io/4_RENTCARS.inp", "r") as f:
 sorted_distances = sorted(distances)
 sorted_consume_rates = sorted(consume_rates, reverse=True)
 
-def get_index(indexes: set, arr: list, val: int) -> int:
+def get_index(indexes: set, arr, val: int) -> int:
     at = 0
     index = arr.index(val, at)
     while index in indexes:
@@ -43,15 +38,15 @@ def get_index(indexes: set, arr: list, val: int) -> int:
     return index
 
 total = 0
-cars, distance_indexes, consume_rate_indexes = [], set(), set()
+cars, cache_distances, cache_consume_rates = [], set(), set()
 for i in range(N):
     consume_rate = sorted_consume_rates.pop()
     distance = sorted_distances.pop()
 
-    distance_index = get_index(distance_indexes, distances, distance)
-    consume_rate_index = get_index(consume_rate_indexes, consume_rates, consume_rate)
+    distance_order = get_index(cache_distances, distances, distance)
+    consume_rate_index = get_index(cache_consume_rates, consume_rates, consume_rate)
 
-    selected_car = SelectedCar(distance, consume_rate, index=consume_rate_index ,order=distance_index)
+    selected_car = SelectedCar(distance, consume_rate, consume_rate_index, distance_order)
     total += selected_car.get_cost()
     cars.append(selected_car)
 
