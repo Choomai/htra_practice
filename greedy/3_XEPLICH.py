@@ -5,14 +5,7 @@ class Event:
     startDay: int
     endDay: int
     index: int
-    duration: int
 
-    def __init__(self, startDay, endDay, index) -> None:    
-        self.startDay = startDay
-        self.endDay = endDay
-        self.index = index
-        self.duration = endDay - startDay
-    
     def __eq__(self, other: object) -> bool:
         return self.endDay == other.endDay
     def __ne__(self, other: object) -> bool:
@@ -37,13 +30,12 @@ with open("io/3_XEPLICH.inp", "r") as f:
 
 events = sorted(events)
 indexes = []
-total = 0
+last_event = 0
 for event in events:
-    print(event)
-    if total + event.duration > N: break
-    total += event.duration
-    indexes.append(str(event.index))
+    if last_event >= event.startDay: continue
+    last_event = event.endDay
+    indexes.append(str(event.index + 1))
 
 with open("io/3_XEPLICH.out", "w") as f:
-    f.write(str(total) + "\n")
+    f.write(str(len(indexes)) + "\n")
     f.write(" ".join(indexes))
