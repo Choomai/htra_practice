@@ -5,7 +5,7 @@ sorted_dist = sorted(distances, reverse=True)
 sorted_csm_rt = sorted(consume_rates)
 
 def calc(dist_arr: list, csm_arr: list) -> list:
-    result, indexes = 0,[]
+    result, indexes = 0, []
     for index in range(len(dist_arr)): # or csm_arr
         tmp = dist_arr[index] * csm_arr[index]
         result += tmp
@@ -13,13 +13,13 @@ def calc(dist_arr: list, csm_arr: list) -> list:
         # Insert the current distance and current fuel consumption
         # to location matching the index at un-sorted distance
     
-    return [result, indexes]
+    return result, indexes
 
 if len(distances) == len(consume_rates):
     print(calc(sorted_dist, sorted_csm_rt))
     exit(0)
 
 for _ in range(m - n): sorted_csm_rt.pop()
-final_result = calc(sorted_dist, sorted_csm_rt)
-print(final_result[0])
-print("\n".join(final_result[1]))
+final_result, indexes = calc(sorted_dist, sorted_csm_rt)
+print(final_result)
+print("\n".join(indexes))
