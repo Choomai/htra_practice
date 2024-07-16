@@ -1,21 +1,60 @@
 # Identical to TTH/18-19/1
 from dataclasses import dataclass
 
+# DEBUG
+from os import chdir
+from os.path import join
+chdir(join("null_practice", "greedy"))
+
 @dataclass
 class SelectedCar:
-    group: int
+    distance: int
     consume_rate: int
     index: int
+    order: int
 
+    def __lt__(self, other: object) -> bool:
+        return self.order < other.order
+    def __gt__(self, other: object) -> bool:
+        return self.order > other.order
+    def __le__(self, other: object) -> bool:
+        return self.order <= other.order
+    def __ge__(self, other: object) -> bool:
+        return self.order <= other.order
+
+    def get_cost(self) -> int:
+        return self.distance * self.consume_rate
 
 with open("io/4_RENTCARS.inp", "r") as f:
     N, M = map(int, f.readline().split(" "))
-    groups = list(map(int, f.readline().split(" ")))
-    consume_rate = list(map(int, f.readline().split(" ")))
+    distances = tuple(map(int, f.readline().split(" ")))
+    consume_rates = tuple(map(int, f.readline().split(" ")))
 
-sorted_group = sorted(groups)
-sorted_consume_rate = sorted(consume_rate, reverse=True)
+sorted_distances = sorted(distances)
+sorted_consume_rates = sorted(consume_rates, reverse=True)
 
+def get_index(indexes: set, arr: list, val: int) -> int:
+    at = 0
+    index = arr.index(val, at)
+    while index in indexes:
+        at = index + 1
+        index = arr.index(val, at)
+    indexes.add(index)
+    return index
+
+total = 0
+cars, distance_indexes, consume_rate_indexes = [], set(), set()
+for i in range(N):
+    consume_rate = sorted_consume_rates.pop()
+    distance = sorted_distances.pop()
+
+    distance_index = get_index(distance_indexes, distances, distance)
+    consume_rate_index = get_index(consume_rate_indexes, consume_rates, consume_rate)
+
+    selected_car = SelectedCar(distance, consume_rate, index=consume_rate_index ,order=distance_index)
+    total += selected_car.get_cost()
+    cars.append(selected_car)
 
 with open("io/4_RENTCARS.out", "w") as f:
-    pass
+    f.write(f"{total}\n")
+    f.write(" ".join([str(car.index + 1) for car in sorted(cars)]))
