@@ -1,6 +1,6 @@
 from itertools import permutations
 
-routes = {} # start_id, end_id, length
+routes = {} # start_id-end_id: length
 with open("io/CAR.inp", "r") as f:
     n, m = map(int, f.readline().split())
     for _ in range(m):
