@@ -1,4 +1,5 @@
 def divisor_counts(n):
+    n += 1
     divisor_counts = [1] * n
     divisor_counts[0] = None
     for i in range(2, n):
@@ -6,6 +7,5 @@ def divisor_counts(n):
             divisor_counts[j] += 1
     return divisor_counts
 
-# Example usage:
-n = int(100)
+n = int(1e7)
 print(divisor_counts(n))
