@@ -1,12 +1,10 @@
-# What is this ? Can't understand what the problem is...
 
-import sys
-from pprint import pprint
-
-m = int(input())
 key_dict = {1: " "}
-for i in range(m): key_dict[i + 2] = input()
-keyboard_input = input().split()
+with open("io/1_T9.inp", "r") as f:
+    m = int(f.readline())
+    for i in range(2, m+2): key_dict[i] =
+    keyboard_input = tuple(map(int, f.readline().split()))
+
 cached_key, output = "", ""
 index = 0
 for key in keyboard_input:
