@@ -18,10 +18,10 @@ for i in range(1, N+1):
     j = 0
     while j < i and customers[j].end_time <= customers[i-1].start_time: j += 1
 
-    if dp[i-1]["income"] > dp[j]["income"] + customers[i-1].pay:
+    if dp[i-1]["income"] > dp[j]["income"] + customers[i-1].pay: # Not adding
         dp[i]["income"] = dp[i-1]["income"]
         dp[i]["indexes"] = dp[i-1]["indexes"]
-    else:
+    else: # Add
         dp[i]["income"] = dp[j]["income"] + customers[i-1].pay
         dp[i]["indexes"] = dp[j]["indexes"] + [customers[i-1].index + 1]
 
