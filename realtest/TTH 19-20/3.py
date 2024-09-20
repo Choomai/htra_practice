@@ -16,5 +16,6 @@ def make_palindrome(s):
         # Return the palindrome that requires fewer insertions
         return pal1 if len(pal1) < len(pal2) else pal2
 
+print("=====")
 for sym_str in syms: 
     print(make_palindrome(sym_str))
