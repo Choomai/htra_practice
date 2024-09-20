@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from itertools import combinations
 
 @dataclass
 class Customer:
