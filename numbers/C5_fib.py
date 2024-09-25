@@ -1,5 +1,3 @@
-from functools import lru_cache
-
 a1, a2 = 1, 1
 
 X = int(input())
