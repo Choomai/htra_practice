@@ -1,10 +1,10 @@
 N = int(input()) + 1
 
-prime = []
+primes = []
 sieve = [True] * N
 for i in range(2, N):
     if sieve[i]:
-        prime.append(i)
+        primes.append(i)
         for j in range(i*i, N, i): sieve[j] = False
 
-print(prime)
+print(primes[-1])
