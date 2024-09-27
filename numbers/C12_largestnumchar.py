@@ -1,0 +1,1 @@
+print(max(map(int, tuple(input()))))
