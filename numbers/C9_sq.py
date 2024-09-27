@@ -14,5 +14,4 @@ while N >= 2:
             print(i)
             exit(0)
     i += 1
-else:
-    print(N)
+else: print(N)
