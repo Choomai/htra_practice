@@ -1,32 +1,37 @@
-from itertools import permutations, pairwise
+from itertools import pairwise
 
 with open("io/1_shortestpath.inp", "r") as f:
     N, P = map(int, f.readline().split())
-    paths = {}
+    possible_paths = {}
     for _ in range(P):
         start, end, length = map(int, f.readline().split())
-        paths[f"{start}-{end}"] = length
+        possible_paths[f"{start}-{end}"] = length
+
+def get_length(path: range) -> int:
+    length = 0
+    for start, end in pairwise(path):
+        if possible_paths[f"{start}-{end}"]: length += possible_paths[f"{start}-{end}"]
+    return length
+
+paths = {}
+trip_length = get_length(range(N))
+trip = list(range(N))
+
+for current in range(N-1, 0, -1): # N->1
+    for back in range(current-2, -1, -1): # current->0
+        reverse_length = possible_paths.get(f"{back}-{current}")
+        if not reverse_length: continue
+
+        current_length = get_length(range(back, current+1))
+
+        if reverse_length <= current_length:
+            for node in range(back+1, current):
+                trip.remove(node) # Remove all middle nodes
+                possible_paths[f"{node-1}-{node}"] = None # Remove longer path
+                possible_paths[f"{node}-{node+1}"] = None
+
+            trip_length -= current_length
+            trip_length += reverse_length
     
-def check(path: tuple) -> bool:
-    global N
-    return path[0] == 0 and path[-1] == N-1
-
-saved_path = None
-min_length = float("inf")
-
-for i in range(2, N+1):
-    if saved_path: break
-
-    for path in filter(check, permutations(range(N), i)):
-        current_length = 0
-        for start, end in pairwise(path):
-            try: current_length += paths[f"{start}-{end}"]
-            except KeyError:
-                current_length = None
-                break
-        if current_length and current_length < min_length:
-            min_length = current_length
-            saved_path = path
-
-print(min_length)
-print(*saved_path, sep=" -> ")
+print(trip_length)
+print(*trip, sep=" -> ")
