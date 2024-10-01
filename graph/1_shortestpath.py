@@ -16,20 +16,20 @@ def get_length(path: range) -> int:
 paths = {}
 trip_length = get_length(range(N))
 trip = list(range(N))
+removed = set()
 
-for current in range(N-1, 0, -1): # N->1
+for current in range(0, N+1): # 1->N
     for back in range(current-2, -1, -1): # current->0
         reverse_length = possible_paths.get(f"{back}-{current}")
         if not reverse_length: continue
+        if back in removed or current in removed: continue
 
         current_length = get_length(range(back, current+1))
 
         if reverse_length <= current_length:
             for node in range(back+1, current):
                 trip.remove(node) # Remove all middle nodes
-                possible_paths[f"{node-1}-{node}"] = None # Remove longer path
-                possible_paths[f"{node}-{node+1}"] = None
-
+                removed.add(node)
             trip_length -= current_length
             trip_length += reverse_length
     
