@@ -4,7 +4,6 @@ with open("io/2_roundtrip.inp", "r") as f:
     for _ in range(P): trip += f.readline()[:3:2]
 
 indexes = [None, None]
-cached_num = None
 
 def generate_trip(max_node: int) -> str:
     base_str = list(map(str, range(max_node)))
