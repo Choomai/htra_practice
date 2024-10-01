@@ -3,8 +3,6 @@ with open("io/2_roundtrip.inp", "r") as f:
     trip = ""
     for _ in range(P): trip += f.readline()[:3:2]
 
-indexes = [None, None]
-
 def generate_trip(max_node: int) -> str:
     base_str = list(map(str, range(max_node)))
     base_str.append("0")
