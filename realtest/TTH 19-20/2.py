@@ -7,7 +7,7 @@ with open("io/2.inp", "r") as f:
         row_inp = [int(elem) for elem in f.readline().split()]
         dd_arr.append(row_inp)
         d_arr.extend(filter(lambda x: x != 0, row_inp))
-    d_arr = sorted(d_arr, reverse=True) # -> [9,8,7,6,5,4...]
+    d_arr.sort(reverse=True) # -> [9,8,7,6,5,4...]
 
 group_1, group_2 = [],[]
 sum_1, sum_2 = 0,0
@@ -25,7 +25,7 @@ for cls in group_2:
     x_pos, y_pos = 0,0
     for i in range(n):
         try: x_pos = dd_arr[i].index(cls)
-        except ValueError: pass
+        except ValueError: continue
         else: 
             y_pos = i
             dd_arr[i][x_pos] = 0
@@ -33,5 +33,5 @@ for cls in group_2:
     map_2d[y_pos][x_pos] = 1
 
 with open("io/2.out", "w") as f:
-    f.writelines(map(str, map_2d))
+    f.writelines(map(lambda x: str(x) + "\n", map_2d))
     f.write(f"{sum_1} {sum_2}")
