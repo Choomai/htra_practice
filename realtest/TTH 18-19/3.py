@@ -1,5 +1,5 @@
-input() # N is useless
-candy_packs = sorted([int(pack) for pack in input().split()], reverse=True)
+with open("io/3.inp", "r") as f:
+    candy_packs = sorted([int(pack) for pack in f.readline().split()], reverse=True)
 group_1, group_2 = [],[]
 sum_1, sum_2 = 0,0
 for pack in candy_packs:
